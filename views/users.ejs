@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+        strong {
+            font-weight: bold;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .action-button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .accept-button {
+            background-color: #5cb85c;
+            color: #fff;
+        }
+        .reject-button {
+            background-color: #d9534f;
+            color: #fff;
+        }
+        .action-button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>User List</h1>
+        <ul>
+            <% users.forEach(function(user) { %>
+                <li>
+                    <div>
+                        <strong>Name:</strong> <%= user.Name %><br>
+                        <strong>Roll No:</strong> <%= user.RollNo %><br>
+                        <strong>Details:</strong> <%= user.Details %><br>
+                        <strong>Email:</strong> <%= user.Email %><br>
+                    </div>
+                    <div class="action-buttons">
+                        <form action="/accept" method="post">
+                            <input type="hidden" name="userId" value="<%= user._id %>">
+                            <button type="submit" class="accept-button">Accept</button>
+                        </form>
+                        <form action="/reject" method="post">
+                            <input type="hidden" name="userId" value="<%= user._id %>">
+                            <button type="submit" class="reject-button">Reject</button>
+                        </form>
+                    </div>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+</body>
+</html>
