@@ -57,8 +57,8 @@ app.post('/accept', async (req, res) => {
                 res.status(500).send('Error sending email');
             } else {
                 console.log('Email sent:', info.response);
-                res.status(200).send('Email sent successfully');
-                res.render("/");
+                // res.status(200).render('/');
+                res.redirect("/");
             }
         });
     } catch (error) {
@@ -91,8 +91,8 @@ app.post('/reject', async (req, res) => {
                 res.status(500).send('Error sending email');
             } else {
                 console.log('Email sent:', info.response);
-                res.status(200).send('Email sent successfully');
-                res.render("/");
+                // res.status(200).send('Email sent successfully');
+                res.redirect("/");
             }
         });
     } catch (error) {
