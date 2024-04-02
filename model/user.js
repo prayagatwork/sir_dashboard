@@ -9,7 +9,7 @@ const UserSchema=new mongoose.Schema({
         type:String,
         required:true
     },
-    Daet:{
+    Date:{
         type:Date,
         required:true
     },
