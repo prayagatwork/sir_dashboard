@@ -67,6 +67,18 @@ app.post('/accept', async (req, res) => {
     }
 });
 
+app.post('/deleteddata', async(req,res)=>{
+    const userId = req.body.userId;
+
+    try {
+        await User.findByIdAndDelete(userId);  // Delete user from DB
+        res.redirect("/");
+    } catch (error) {
+        console.error("Error removing request:", error);
+        res.status(500).send("Internal Server Error");
+    }
+})
+
 // Define the route to handle rejecting requests
 app.post('/reject', async (req, res) => {
     try {
