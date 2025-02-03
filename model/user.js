@@ -5,6 +5,10 @@ const UserSchema=new mongoose.Schema({
         type:String,
         required:true
     },
+    BlockId:{
+        type:String,
+        required:true
+    },
     RoomNo:{
         type:String,
         required:true
