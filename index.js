@@ -38,7 +38,7 @@ app.post('/accept', async (req, res) => {
     try {
         // Send email to the user with accepted request
         const { userId } = req.body;
-        const user = await User.findByIdAndDelete(userId); // Assuming you have a User model
+        const user = await User.findByIdAndUpdate(userId, { isAccepted: true });; // Assuming you have a User model
         if (!user) {
             return res.status(404).send('User not found');
         }
