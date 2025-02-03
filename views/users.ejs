@@ -150,11 +150,18 @@
                                 <strong>Details:</strong> <%= user.Details %><br>
                                 <strong>Email:</strong> <%= user.Email %><br>
                             </div>
+                            <div class="action-buttons">
+                                <form action="/remove" method="post">
+                                    <input type="hidden" name="userId" value="<%= user._id %>">
+                                    <button type="submit" class="reject-button">Remove</button>
+                                </form>
+                            </div>
                         </li>
                     <% } %>
                 <% }); %>
             </ul>
         </div>
+        
     </div>
 
     <script>
